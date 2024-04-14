@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace ClearAllInventoryFilters
 {
-    [BepInPlugin(__GUID__, __NAME__, "1.0.0")]
+    [BepInPlugin(__GUID__, __NAME__, "1.0.2")]
     public class ClearFiltersMod : BaseUnityPlugin
     {
         public const string __NAME__ = "ClearInventoryFilters";
