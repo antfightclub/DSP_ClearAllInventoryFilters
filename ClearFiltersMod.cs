@@ -42,6 +42,14 @@ namespace ClearAllInventoryFilters
             btn.transform.SetParent(invParentTransform);
         }
 
+        public void Update()
+        {
+            if (!GameMain.isRunning || GameMain.isPaused || GameMain.instance.isMenuDemo)
+            {
+                return;
+            }
+
+        }
 
        /*
        public void BeginGame()
