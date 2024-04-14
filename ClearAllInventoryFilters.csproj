@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>ClearAllInventoryFilters</AssemblyName>
-    <Description>Adds a button in inventory to clear all filters</Description>
+    <Description>Adds a button in player inventory to clear all filters</Description>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
