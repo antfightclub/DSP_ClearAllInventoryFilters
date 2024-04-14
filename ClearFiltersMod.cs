@@ -37,7 +37,7 @@ namespace ClearAllInventoryFilters
             UIDESwarmPanel swarmPanel = UIRoot.instance.uiGame.dysonEditor.controlPanel.hierarchy.swarmPanel;
             UIButton src = swarmPanel.orbitButtons[0];
             UIButton btn = GameObject.Instantiate<UIButton>(src);
-            RectTransform btnRect = Util.NormalizeRectWithTopLeft(btn, 125f, 27f, windowTrans);
+            RectTransform btnRect = NormalizeRectWithTopLeft(btn, 125f, 27f, windowTrans);
             btnRect.sizeDelta = new Vector2(75f, 19f);
             btn.transform.Find("frame").gameObject.SetActive(false);
             Text btnText = btn.transform.Find("Text").GetComponent<Text>();
@@ -64,6 +64,22 @@ namespace ClearAllInventoryFilters
             }
             instance.inventory.OnStorageContentChanged();
 
+        }
+
+        // This method is based on Hetima's DSP_PlanetFinder mod
+        // parent upper left origin, cmp upper left reference Y axis is also passed as a positive number
+        public static RectTransform NormalizeRectWithTopLeft(Component cmp, float left, float top, Transform parent = null)
+        {
+            RectTransform rect = cmp.transform as RectTransform;
+            if (parent != null)
+            {
+                rect.SetParent(parent, false);
+            }
+            rect.anchorMax = new Vector2(0f, 1f);
+            rect.anchorMin = new Vector2(0f, 1f);
+            rect.pivot = new Vector2(0f, 1f);
+            rect.anchoredPosition3D = new Vector3(left, -top, 0f);
+            return rect;
         }
 
         static class Patch
