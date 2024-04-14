@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 namespace ClearAllInventoryFilters
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin(__GUID__, __NAME__, "1.0.0")]
     public class ClearFiltersMod : BaseUnityPlugin
     {
+        public const string __NAME__ = "ClearInventoryFilters";
+        public const string __GUID__ = "com.antfightclub.dsp." + __NAME__;
+
         new internal static ManualLogSource Logger;
         void Awake()
         {
