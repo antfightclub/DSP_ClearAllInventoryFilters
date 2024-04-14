@@ -1,5 +1,5 @@
 {
-  "name": "DSP_ClearAllInventoryFilters",
+  "name": "ClearInventoryFilters",
   "description": "Adds a button in the player inventory to clear all inventory filters",
   "version_number": "1.0.0",
   "dependencies": [],
