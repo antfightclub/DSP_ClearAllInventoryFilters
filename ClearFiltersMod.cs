@@ -69,10 +69,16 @@ namespace ClearAllInventoryFilters
         static class Patch
         {
 
+            internal static bool _initialized = false;
+
             [HarmonyPrefix, HarmonyPatch(typeof(GameMain), "Begin")]
             public static void GameMain_Begin_Prefix()
             {
-                CreateUI();
+                if (!_initialized)
+                {
+                    _initialized = true;
+                    CreateUI();
+                }
             }
             
         }
