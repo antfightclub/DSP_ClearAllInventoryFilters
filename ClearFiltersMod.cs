@@ -83,7 +83,7 @@ namespace ClearAllInventoryFilters
             {
                 instance.inventory.storage.SetFilter(i, 0);
             }
-
+            instance.inventory.OnStorageContentChanged();
 
         }
 
