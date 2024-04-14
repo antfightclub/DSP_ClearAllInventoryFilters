@@ -3,7 +3,6 @@ using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Experimental.UIElements;
 
 namespace ClearAllInventoryFilters
 {
@@ -53,31 +52,11 @@ namespace ClearAllInventoryFilters
             btn.button.onClick.AddListener(OnClearFiltersButtonClick);
         }
 
-        public void Update()
-        {
-            if (!GameMain.isRunning || GameMain.isPaused || GameMain.instance.isMenuDemo)
-            {
-                return;
-            }
-
-        }
-
         public static void OnClearFiltersButtonClick()
         {
             Logger.LogInfo("OnClearFiltersButtonClick called!");
             UIInventoryWindow instance = UIRoot.instance.uiGame.inventoryWindow;
-            //int colCount = instance.inventory.colCount;
-            //int rowCount = instance.inventory.rowCount;
-
-            /*
-            for (int i = 0; i < rowCount; i++)
-            {
-                for (int j = 0; j < colCount; j++)
-                {
-                    instance.inventory.storage.SetFilter(0, 0);
-                }
-            }
-            */
+            
             int size = instance.inventory.storage.size;
             for (int i = 0; i < size; i++)
             {
@@ -87,35 +66,14 @@ namespace ClearAllInventoryFilters
 
         }
 
-       /*
-       public void BeginGame()
-        {
-            if (DSPGame.IsMenuDemo)
-            {
-                return;
-            }
-        }*/
-
-
-
         static class Patch
         {
+
             [HarmonyPrefix, HarmonyPatch(typeof(GameMain), "Begin")]
             public static void GameMain_Begin_Prefix()
             {
                 CreateUI();
             }
-
-            [HarmonyPostfix, HarmonyPatch(typeof(UIGame), "_OnUpdate")]
-            public static void UIGame__OnUpdate_Postfix()
-            {
-                if (GameMain.isPaused || !GameMain.isRunning)
-                {
-                    return;
-                }
-                
-            }
-
             
         }
         
