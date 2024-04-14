@@ -26,6 +26,8 @@ namespace ClearAllInventoryFilters
 
         public static void CreateUI()
         {
+            Logger.LogInfo("CreateUI called");
+
             // Grab instance of player inventory
             UIInventoryWindow invInstance = UIRoot.instance.uiGame.inventoryWindow;
             GameObject inv = invInstance.gameObject;
