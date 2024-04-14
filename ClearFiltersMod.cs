@@ -37,12 +37,12 @@ namespace ClearAllInventoryFilters
             UIDESwarmPanel swarmPanel = UIRoot.instance.uiGame.dysonEditor.controlPanel.hierarchy.swarmPanel;
             UIButton src = swarmPanel.orbitButtons[0];
             UIButton btn = GameObject.Instantiate<UIButton>(src);
-            RectTransform btnRect = NormalizeRectWithTopLeft(btn, 125f, 27f, windowTrans);
-            btnRect.sizeDelta = new Vector2(75f, 19f);
+            RectTransform btnRect = NormalizeRectWithTopLeft(btn, 115f, 30f, windowTrans);
+            btnRect.sizeDelta = new Vector2(68f, 16f);
             btn.transform.Find("frame").gameObject.SetActive(false);
             Text btnText = btn.transform.Find("Text").GetComponent<Text>();
             btnText.text = "Clear filters";
-            btnText.fontSize = 14;
+            btnText.fontSize = 12;
 
 
             Transform invParentTransform = bgPanel_child.transform;
@@ -81,6 +81,8 @@ namespace ClearAllInventoryFilters
             rect.anchoredPosition3D = new Vector3(left, -top, 0f);
             return rect;
         }
+
+
 
         static class Patch
         {
