@@ -65,6 +65,26 @@ namespace ClearAllInventoryFilters
         public static void OnClearFiltersButtonClick()
         {
             Logger.LogInfo("OnClearFiltersButtonClick called!");
+            UIInventoryWindow instance = UIRoot.instance.uiGame.inventoryWindow;
+            //int colCount = instance.inventory.colCount;
+            //int rowCount = instance.inventory.rowCount;
+
+            /*
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < colCount; j++)
+                {
+                    instance.inventory.storage.SetFilter(0, 0);
+                }
+            }
+            */
+            int size = instance.inventory.storage.size;
+            for (int i = 0; i < size; i++)
+            {
+                instance.inventory.storage.SetFilter(i, 0);
+            }
+
+
         }
 
        /*
@@ -95,6 +115,8 @@ namespace ClearAllInventoryFilters
                 }
                 
             }
+
+            
         }
         
     }
