@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,11 @@ namespace ClearAllInventoryFilters
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class ClearFiltersMod : BaseUnityPlugin
     {
+        new internal static ManualLogSource Logger;
         void Awake()
         {
+
+            Logger = base.Logger;
 
             Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);
 
@@ -25,21 +29,26 @@ namespace ClearAllInventoryFilters
             // Grab instance of player inventory
             UIInventoryWindow invInstance = UIRoot.instance.uiGame.inventoryWindow;
             GameObject inv = invInstance.gameObject;
-            RectTransform windowTrans = inv.gameObject.GetComponent<RectTransform>(); 
+            GameObject bgPanel_child = inv.transform.GetChild(1).gameObject; 
+            RectTransform windowTrans = bgPanel_child.gameObject.GetComponent<RectTransform>();
+
 
             UIDESwarmPanel swarmPanel = UIRoot.instance.uiGame.dysonEditor.controlPanel.hierarchy.swarmPanel;
             UIButton src = swarmPanel.orbitButtons[0];
             UIButton btn = GameObject.Instantiate<UIButton>(src);
-            RectTransform btnRect = Util.NormalizeRectWithTopLeft(btn, 50f, 50f, windowTrans);
-            btnRect.sizeDelta = new Vector2(100f, 24f);
+            RectTransform btnRect = Util.NormalizeRectWithTopLeft(btn, 125f, 27f, windowTrans);
+            btnRect.sizeDelta = new Vector2(75f, 19f);
             btn.transform.Find("frame").gameObject.SetActive(false);
             Text btnText = btn.transform.Find("Text").GetComponent<Text>();
             btnText.text = "Clear filters";
-            btnText.fontSize = 16;
+            btnText.fontSize = 14;
 
-            Transform invParentTransform = inv.transform;
 
+            Transform invParentTransform = bgPanel_child.transform;
             btn.transform.SetParent(invParentTransform);
+
+            // onclick
+            btn.button.onClick.AddListener(OnClearFiltersButtonClick);
         }
 
         public void Update()
@@ -51,6 +60,11 @@ namespace ClearAllInventoryFilters
 
         }
 
+        public static void OnClearFiltersButtonClick()
+        {
+            Logger.LogInfo("OnClearFiltersButtonClick called!");
+        }
+
        /*
        public void BeginGame()
         {
@@ -60,12 +74,24 @@ namespace ClearAllInventoryFilters
             }
         }*/
 
+
+
         static class Patch
         {
             [HarmonyPrefix, HarmonyPatch(typeof(GameMain), "Begin")]
             public static void GameMain_Begin_Prefix()
             {
                 CreateUI();
+            }
+
+            [HarmonyPostfix, HarmonyPatch(typeof(UIGame), "_OnUpdate")]
+            public static void UIGame__OnUpdate_Postfix()
+            {
+                if (GameMain.isPaused || !GameMain.isRunning)
+                {
+                    return;
+                }
+                
             }
         }
         
