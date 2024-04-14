@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using BepInEx.Logging;
+//using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +12,11 @@ namespace ClearAllInventoryFilters
         public const string __NAME__ = "ClearInventoryFilters";
         public const string __GUID__ = "com.antfightclub.dsp." + __NAME__;
 
-        new internal static ManualLogSource Logger;
+        //new internal static ManualLogSource Logger;
         void Awake()
         {
 
-            Logger = base.Logger;
+            //Logger = base.Logger;
 
             Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);
 
@@ -28,7 +28,7 @@ namespace ClearAllInventoryFilters
 
         public static void CreateUI()
         {
-            Logger.LogInfo("CreateUI called");
+            //Logger.LogInfo("CreateUI called");
 
             // Grab instance of player inventory
             UIInventoryWindow invInstance = UIRoot.instance.uiGame.inventoryWindow;
@@ -57,7 +57,7 @@ namespace ClearAllInventoryFilters
 
         public static void OnClearFiltersButtonClick()
         {
-            Logger.LogInfo("OnClearFiltersButtonClick called!");
+            //Logger.LogInfo("OnClearFiltersButtonClick called!");
             UIInventoryWindow instance = UIRoot.instance.uiGame.inventoryWindow;
             
             int size = instance.inventory.storage.size;
