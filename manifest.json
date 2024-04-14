@@ -1,7 +1,7 @@
 {
   "name": "ClearInventoryFilters",
-  "description": "Adds a button in the player inventory to clear all inventory filters",
-  "version_number": "1.0.0",
+  "description": "Adds a button in the player inventory to clear all inventory filters. Does not affect logistics slots.",
+  "version_number": "1.0.1",
   "dependencies": [],
   "website_url": "https://github.com/antfightclub/DSP_ClearAllInventoryFilters"
 }
