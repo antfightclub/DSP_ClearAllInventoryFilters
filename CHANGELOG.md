@@ -1,3 +1,8 @@
+# v1.0.3
+- Updated README.md for a little context
+- Removed unnecessary assembly references which were messing with the compiler
+- ...
+
 # v1.0.2
 - Removed unnecessary logging calls as it wasn't needed (oops)
 - Add BepInEx 5.4.17 as dependency
