@@ -28,13 +28,13 @@
   
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\SteamLibrary\steamapps\common\Dyson Sphere Program\DSPGAME_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>assemblies\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\SteamLibrary\steamapps\common\Dyson Sphere Program\DSPGAME_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>assemblies\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\SteamLibrary\steamapps\common\Dyson Sphere Program\DSPGAME_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>assemblies\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
