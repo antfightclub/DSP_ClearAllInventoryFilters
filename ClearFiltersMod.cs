@@ -59,15 +59,14 @@ namespace ClearAllInventoryFilters
         {
             //Logger.LogInfo("OnClearFiltersButtonClick called!");
             UIInventoryWindow instance = UIRoot.instance.uiGame.inventoryWindow;
-            StorageComponent storageComponent = instance.GetComponent<StorageComponent>();
             
-            
-            int size = storageComponent.size;
+            int size = instance.inventory.storage.size;
             for (int i = 0; i < size; i++)
             {
-                storageComponent.SetFilter(i, 0);
+                instance.inventory.storage.SetFilter(i, 0);
             }
             instance.inventory.OnStorageContentChanged();
+
         }
 
         // This method is based on Hetima's DSP_PlanetFinder mod
