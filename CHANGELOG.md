@@ -1,7 +1,7 @@
 # v1.0.3
 - Updated README.md for a little context
-- Removed unnecessary assembly references which were messing with the compiler
-- ...
+- Updated mod description for a little context
+- Removed unnecessary assembly references in .csproj (this change doesn't affect the mod in any way)
 
 # v1.0.2
 - Removed unnecessary logging calls as it wasn't needed (oops)

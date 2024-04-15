@@ -1,6 +1,6 @@
 {
   "name": "ClearInventoryFilters",
-  "description": "Adds a button in the player inventory to clear all inventory filters. Does not affect logistics slots.",
+  "description": "Can't sort your inventory because of accidentally adding loads of filters during gameplay? This simple QoL mod adds a button in the player inventory to clear all inventory filters. Sort your inventory with ease! Does not affect logistics slots.",
   "version_number": "1.0.3",
   "dependencies": [ "xiaoye97-BepInEx-5.4.17" ],
   "website_url": "https://github.com/antfightclub/DSP_ClearAllInventoryFilters"
